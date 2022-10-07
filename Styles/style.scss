@@ -1,0 +1,127 @@
+@import '_variables.scss';
+
+
+@mixin shadow ($valeur) {
+    box-shadow: 10px 10px 15px -4px $valeur;
+}
+@function double($a, $b) {
+    @return $a * $b;
+}
+@for $i from 1 through 6 {
+    .adv-item:nth-child(#{$i}) {
+        background-color: rgb(30*$i, 30*$i, 243*$i);
+        color: rgb(238*$i, 31*$i, 31*$i);
+    }
+}
+
+
+
+body {
+    font: 100% "Space Mono", monospace;
+    color: $color-gray-darker;
+    margin: 0;
+    padding: $general-padding;
+    background-color: $color-white;
+    overflow-x: hidden;
+}
+
+main {
+    padding: 0 $general-padding;
+}
+
+article {
+
+    display: flex;
+    flex-wrap: wrap;
+
+    section {
+
+        flex-grow: 1;
+        flex-basis: 45%;
+        border: 1px $color-gray solid;
+        @include shadow ($color-gray-darker);
+        padding: $general-padding;
+        margin: 16px;
+        clear: both;
+        overflow: auto;
+        box-sizing: border-box;
+
+        #selling-points {
+
+            flex-grow: 2;
+            flex-basis: 100%;
+        }
+    }
+    code {
+
+        background: $color-black;
+        border: 1px solid $color-gray-darker;
+        color: $color-gray;
+        page-break-inside: avoid;
+        font-family: monospace;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        padding: double($general-padding, 2);
+        display: block;
+        word-wrap: break-word;
+
+        .before {
+            float: left;
+            width: 40%;
+        }
+        .after {
+            float: right;
+            width: 40%;
+        }
+    }
+}
+
+h1, h2, h3 {
+    color: $color-pink;
+}
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+    padding: double($general-padding, 2);
+    margin-bottom: 0px;
+}
+
+.messages {
+    padding: 16px;
+
+    .success {  
+
+        border: 1px solid $color-gray;
+        padding: $general-padding;
+        color: $color-white;
+        background-color: $color-green;
+    }
+    
+    .error {
+
+        @extend .success;
+        background-color: $color-red;
+
+
+        &:hover {
+            background-color: $color-green;
+        }
+    }
+    
+    .warning {
+
+        @extend .success;
+        background-color: $color-orange;
+    }
+}
+
+
+
